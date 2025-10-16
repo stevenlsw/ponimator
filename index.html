@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Interaction human-human motion animation and generation anchored on interactive poses.">
+  <meta name="keywords" content=" Human-human interaction, Human interaction animation, Human interaction generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ponimator: Unfolding Interactive Pose for Versatile Human-human Interaction Animation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  
+
+  <style>
+    .title.is-1.publication-title {
+      font-size: 48px;
+      font-weight: bold;
+      background-image: linear-gradient(to right, #1CA1CC, #FF4500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-text {
+      background-image: linear-gradient(to right, #1CA1CC, #FF4500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+
+
+</head>
+
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Ponimator: Unfolding Interactive Pose for Versatile Human-Human
+              Interaction Animation</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://stevenlsw.github.io">Shaowei Liu</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://ericguo5513.github.io/">Chuan Guo*</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://zhoubinwy.github.io/">Bing Zhou*</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://jianwang-cmu.github.io/">Jian Wang*</a><sup>2</sup>,
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>University of Illinois Urbana-Champaign,</span>
+              <span class="author-block"><sup>2</sup>Snap Research,</span>
+              <span class="authors-block">&ast; Co-corresponding author</span><br />
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">ICCV 2025</span>
+            </div>
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2510.14976" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2510.14976" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Video Link. -->
+                <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+
+                <!-- Slide Link. -->
+                <!-- <span class="link-block">
+                <a href="https://drive.google.com/file/"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-slideshare"></i>
+                    </span>
+                    <span>Slide</span>
+                </a>
+            </span> -->
+
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/stevenlsw/ponimator"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- <span class="link-block">
+                  <a href="https://twitter.com/stevenpg8/status/1840857643918713173" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-twitter"></i>
+                  </span>
+                  <span>Twitter Intro</span>
+                  </a>
+            </span> -->
+
+                <!-- <span class="link-block">
+                <a href="https://colab.research.google.com/drive/1imGIms3Y4RRtddA6IuxZ9bkP7N2gVVC_"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-google"></i>
+                    </span>
+                    <span>Colab</span>
+                </a>
+            </span> -->
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body" style="text-align: center;">
+        <video id="teaser" autoplay muted loop playsinline width="75%">
+          <source src="static/videos/teaser.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Close-proximity human-human interactive poses convey rich contextual information about interaction
+              dynamics.
+              Given such poses, humans can intuitively infer the context and anticipate possible past and future
+              dynamics, drawing on strong priors of human behavior.
+              Inspired by this observation, we propose <span class="gradient-text">Ponimator</span>, a simple framework anchored on proximal interactive
+              poses for versatile interaction animation.
+              Our training data consists of close-contact two-person poses and their surrounding temporal context from
+              motion-capture interaction datasets.
+              Leveraging interactive pose priors, <span class="gradient-text">Ponimator</span> employs two conditional diffusion models: (1) a pose
+              animator that uses the temporal prior to generate dynamic motion sequences from interactive poses,
+              and (2) a pose generator that applies the spatial prior to synthesize interactive poses from a single
+              pose, text, or both when interactive poses are unavailable.
+              Collectively, <span class="gradient-text">Ponimator</span> supports diverse tasks, including image-based interaction animation, reaction
+              animation, and text-to-interaction synthesis,
+              facilitating the transfer of interaction knowledge from high-quality mocap data to open-world scenarios.
+              Empirical experiments across diverse datasets and applications demonstrate the universality of the pose
+              prior and the effectiveness and robustness of our framework.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <img src="static/figs/framework.png" alt="teaser" width="100%" />
+          <!-- <h2 class="subtitle has-text-centered">
+                     </h2> -->
+        </div>
+      </div>
+
+      <!-- Paper video. -->
+      <!-- <div class="columns is-centered has-text-centered">
+                  <div class="column is-four-fifths">
+                    <h2 class="title is-3">Video</h2>
+                    <div class="publication-video">
+                      <iframe src="https://www.youtube.com/embed/" frameborder="0"
+                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                  </div>
+                </div>
+                / Paper video. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Interactive Pose Image Animation</h2>
+          <div class="content">
+            <p class="is-5" style="margin-top: 1rem; font-weight: 500;">
+              Anchored interactive pose pauses 1s for 360° view.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="animation-carousel" class="carousel results-carousel">
+
+        <div class="item">
+          
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card" >
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_buddi/kungfu/kungfu.png" alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_buddi/kungfu/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_buddi/Karate_142/Karate_142.png" alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_buddi/Karate_142/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_buddi/Tango_796/Tango_796.png" alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_buddi/Tango_796/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_buddi/Wrestling_1707/Wrestling_1707.png" alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_buddi/Wrestling_1707/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_buddi/Couple_6806/Couple_6806.png" alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_buddi/Couple_6806/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="portrait-carousel" class="carousel results-carousel" style="margin-top: 3rem;">
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_buddi/happy_258387/happy_258387.png" alt="Source Image"
+                      style="max-height: 400px; width: auto; margin: 0 auto; display: block; object-fit: contain;">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline
+                    style="max-height: 400px; width: auto; margin: 0 auto; display: block;">
+                    <source src="static/videos/vis_buddi/happy_258387/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_buddi/938/000938.jpg" alt="Source Image"
+                      style="max-height: 400px; width: auto; margin: 0 auto; display: block; object-fit: contain;">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline
+                    style="max-height: 400px; width: auto; margin: 0 auto; display: block;">
+                    <source src="static/videos/vis_buddi/938/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_buddi/751/000751.jpg" alt="Source Image"
+                      style="max-height: 400px; width: auto; margin: 0 auto; display: block; object-fit: contain;">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline
+                    style="max-height: 400px; width: auto; margin: 0 auto; display: block;">
+                    <source src="static/videos/vis_buddi/751/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_buddi/happy_56345/happy_56345.png" alt="Source Image"
+                      style="max-height: 400px; width: auto; margin: 0 auto; display: block; object-fit: contain;">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline
+                    style="max-height: 400px; width: auto; margin: 0 auto; display: block;">
+                    <source src="static/videos/vis_buddi/happy_56345/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Interactive Human Video Generation</h2>
+          <p class="subtitle is-5" style="margin-top: 1rem; font-weight: 500;">
+            By taking our method's generated motion as intermediate output, we can generate interactive human videos from a single image.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <!-- Row 1 -->
+        <div class="columns is-multiline" style="margin-bottom: 2rem;">
+          <!-- Image 1 -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image">
+                  <img src="static/videos/vis_motionx/Back_Flip_Kungfu_wushu_Trim9_clip1/Back_Flip_Kungfu_wushu_Trim9_clip1.png" alt="Source Image">
+                </figure>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Input Image</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image 2 -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image">
+                  <img src="static/videos/vis_motionx/Ways_to_Stand_Groomsman_clip1/Ways_to_Stand_Groomsman_clip1.png" alt="Source Image">
+                </figure>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Person 2 Image</strong></p>
+              </div>
+            </div>
+          </div>
+
+           <!-- Video 1 -->
+           <div class="column is-3">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/video_generation/Back_Flip_Kungfu_wushu_Trim9_clip1_dual_person2_motion.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Intermediate Output: Generated Motion</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/video_generation/Back_Flip_Kungfu_wushu_Trim9_clip1_dual_person2.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Output: Generated Video</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="columns is-multiline" style="margin-bottom: 2rem;">
+          <!-- Image 1 -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image">
+                  <img src="static/videos/vis_motionx/Ways_to_Stand_Groomsman_clip1/Ways_to_Stand_Groomsman_clip1.png" alt="Source Image">
+                </figure>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Input Image</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image 2 -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image">
+                  <img src="static/videos/vis_motionx/Back_Flip_Kungfu_wushu_Trim9_clip1/Back_Flip_Kungfu_wushu_Trim9_clip1.png" alt="Source Image">
+                </figure>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Person 2 Image</strong></p>
+              </div>
+            </div>
+          </div>
+
+           <!-- Video 1 -->
+           <div class="column is-3">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/video_generation/Ways_to_Stand_Groomsman_clip1_dual_person1_motion.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Intermediate Output: Generated Motion</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/video_generation/Ways_to_Stand_Groomsman_clip1_dual_person1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Output: Generated Video</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Single-Person Image Interaction Generation</h2>
+          <div class="content">
+            <p class="is-5" style="margin-top: 1rem; font-weight: 500;">
+              <b>Generated interactive pose</b> pauses 1s for 360° view.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="single-person-carousel" class="carousel results-carousel">
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img
+                      src="static/videos/vis_motionx/Boxing_kicking_jumping_6_clip2/Boxing_kicking_jumping_6_clip2.png"
+                      alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_motionx/Boxing_kicking_jumping_6_clip2/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_motionx/dance_13_clip1/dance_13_clip1.png" alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_motionx/dance_13_clip1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img
+                      src="static/videos/vis_motionx/Aerial_Kick_Kungfu_wushu_15_clip2/Aerial_Kick_Kungfu_wushu_15_clip2.png"
+                      alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_motionx/Aerial_Kick_Kungfu_wushu_15_clip2/video.mp4"
+                      type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_motionx/Kung_Fu_Flying_Kick_1_clip1/Kung_Fu_Flying_Kick_1_clip1.png"
+                      alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_motionx/Kung_Fu_Flying_Kick_1_clip1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_motionx/tense_moment_clip5/tense_moment_clip5.png" alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_motionx/tense_moment_clip5/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_motionx/Ways_to_Stand_Karate_clip1/Ways_to_Stand_Karate_clip1.png"
+                      alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_motionx/Ways_to_Stand_Karate_clip1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+
+      <div id="single-person-text-carousel" class="carousel results-carousel" style="margin-top: 3rem;">
+
+        <div class="item">
+          <div class="content has-text-centered" style="margin-bottom: 1rem;">
+            <p class="subtitle is-5"><em>Text input: two person pose for a photo</em></p>
+          </div>
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_motionx/Ways_to_Stand_Groomsman_clip1/Ways_to_Stand_Groomsman_clip1.png"
+                      alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_motionx/Ways_to_Stand_Groomsman_clip1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="content has-text-centered" style="margin-bottom: 1rem;">
+            <p class="subtitle is-5"><em>Text input: one person pushes the other</em></p>
+          </div>
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img
+                      src="static/videos/vis_motionx/Back_Flip_Kungfu_wushu_Trim9_clip1/Back_Flip_Kungfu_wushu_Trim9_clip1.png"
+                      alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_motionx/Back_Flip_Kungfu_wushu_Trim9_clip1/video.mp4"
+                      type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="content has-text-centered" style="margin-bottom: 1rem;">
+            <p class="subtitle is-5"><em>Text input: one person lift another one up</em></p>
+          </div>
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img
+                      src="static/videos/vis_motionx/Bow_For_Beginners_Tutorial_Trim1_clip1/Bow_For_Beginners_Tutorial_Trim1_clip1.png"
+                      alt="Source Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_motionx/Bow_For_Beginners_Tutorial_Trim1_clip1/video.mp4"
+                      type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Interactive Pose Animation</h2>
+        </div>
+      </div>
+
+      <!-- Dataset Selector -->
+      <div class="selectors" style="margin-bottom: 2rem;">
+        <div class="dataset-selector" style="text-align: center;">
+          <!-- <h3 class="title is-5" style="margin-bottom: 1rem;">Dataset</h3> -->
+          <ul class="nav-pills" id="dataset-selector">
+            <li class="active"><a href="javascript:void(0);" onclick="ChangeDataset('interx')">Inter-X</a></li>
+            <li><a href="javascript:void(0);" onclick="ChangeDataset('dualhuman')">Dual-Human</a></li>
+            <li><a href="javascript:void(0);" onclick="ChangeDataset('duolando')">Duolando</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Inter-X Carousel -->
+      <div id="interx-carousel" class="carousel results-carousel dataset-carousel active-carousel">
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_contact/vis_interx/G006T005A023R015/contact_pose.png" alt="Interactive Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Interactive Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_contact/vis_interx/G006T005A023R015/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output:Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_contact/vis_interx/G020T006A030R003/contact_pose.png" alt="Interactive Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Interactive Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_contact/vis_interx/G020T006A030R003/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_contact/vis_interx/G031T000A004R022/contact_pose.png" alt="Interactive Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Interactive Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_contact/vis_interx/G031T000A004R022/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dual-Human Carousel -->
+      <div id="dualhuman-carousel" class="carousel results-carousel dataset-carousel">
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_contact/vis_dh/pair45_001740_1/contact_pose.png" alt="Interactive Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Interactive Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_contact/vis_dh/pair45_001740_1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_contact/vis_dh/pair09_000520_1/contact_pose.png" alt="Interactive Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Interactive Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_contact/vis_dh/pair09_000520_1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_contact/vis_dh/pair01_000242_1/contact_pose.png" alt="Interactive Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Interactive Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_contact/vis_dh/pair01_000242_1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <!-- Duolando Carousel -->
+      <div id="duolando-carousel" class="carousel results-carousel dataset-carousel">
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_contact/vis_dd100/Ballet_005_003_split2_00/contact_pose.png" alt="Interactive Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Interactive Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_contact/vis_dd100/Ballet_005_003_split2_00/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_contact/vis_dd100/Foxtrot_006_000_split0_00/contact_pose.png" alt="Interactive Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Interactive Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_contact/vis_dd100/Foxtrot_006_000_split0_00/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_contact/vis_dd100/Waltz_010_000_split0_00/contact_pose.png" alt="Interactive Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Interactive Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_contact/vis_dd100/Waltz_010_000_split0_00/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Animated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Text-to-Interaction Motion Synthesis</h2>
+        </div>
+      </div>
+
+      <div id="text-to-motion-carousel" class="carousel results-carousel" style="margin-top: 2rem;">
+        
+        <!-- Slide 1: Inter-X Examples 1-3 -->
+        <div class="item">
+          <div class="columns is-multiline">
+            <!-- Example 1 -->
+            <div class="column is-4">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_t2m/vis_interx/G022T003A017R013/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered" style="padding: 1rem; min-height: 80px;">
+                  <p class="subtitle is-6"><strong>One person chases the other person</strong></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Example 2 -->
+            <div class="column is-4">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_t2m/vis_interx/G035T001A009R025/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered" style="padding: 1rem; min-height: 80px;">
+                  <p class="subtitle is-6"><strong>One person sits down first, another sits on his/her lap</strong></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Example 3 -->
+            <div class="column is-4">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_t2m/vis_interx/G038T003A018R018/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered" style="padding: 1rem; min-height: 80px;">
+                  <p class="subtitle is-6"><strong>One person goes to the other person's ear and whispers to him/her</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: CHI3D Examples -->
+        <div class="item">
+          <div class="columns is-multiline">
+            <!-- Example 1 -->
+            <div class="column is-4">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_t2m/vis_chi3d/s02_Handshake_10/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered" style="padding: 1rem; min-height: 80px;">
+                  <p class="subtitle is-6"><strong>Hand shake</strong></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Example 2 -->
+            <div class="column is-4">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_t2m/vis_chi3d/s04_Hug_5/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered" style="padding: 1rem; min-height: 80px;">
+                  <p class="subtitle is-6"><strong>Hug</strong></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Example 3 -->
+            <div class="column is-4">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_t2m/vis_chi3d/s04_Posing_5/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered" style="padding: 1rem; min-height: 80px;">
+                  <p class="subtitle is-6"><strong>Posing</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Single-Person Pose Interaction Synthesis</h2>
+          <!-- <p class="subtitle is-6" style="margin-top: 0.5rem;">
+            Each sample shows the single-person pose input and the synthesized interaction motion.
+          </p> -->
+        </div>
+      </div>
+
+      <!-- Dataset Selector -->
+      <div class="selectors" style="margin-bottom: 2rem;">
+        <div class="dataset-selector" style="text-align: center;">
+          <!-- <h3 class="title is-5" style="margin-bottom: 1rem;">Dataset</h3> -->
+          <ul class="nav-pills" id="single-pose-dataset-selector">
+            <li class="active"><a href="javascript:void(0);" onclick="ChangeSinglePoseDataset('interx')">Inter-X</a></li>
+            <li><a href="javascript:void(0);" onclick="ChangeSinglePoseDataset('dualhuman')">Dual-Human</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Inter-X Carousel -->
+      <div id="single-pose-interx-carousel" class="carousel results-carousel single-pose-carousel active-carousel">
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_p2m/vis_interx/G026T003A016R008/single_pose.png" alt="Single Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Single-Person Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_p2m/vis_interx/G026T003A016R008/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Synthesized Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_p2m/vis_interx/G028T005A023R004/single_pose.png" alt="Single Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Single-Person Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_p2m/vis_interx/G028T005A023R004/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Synthesized Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_p2m/vis_interx/G006T004A018R015/single_pose.png" alt="Single Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Single-Person Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_p2m/vis_interx/G006T004A018R015/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Synthesized Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+
+      <!-- Dual-Human Carousel -->
+      <div id="single-pose-dualhuman-carousel" class="carousel results-carousel single-pose-carousel">
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_p2m/vis_dh/pair00_000019_1/single_pose.png" alt="Single Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Single-Person Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_p2m/vis_dh/pair00_000019_1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Synthesized Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_p2m/vis_dh/pair20_000760_1/single_pose.png" alt="Single Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Single-Person Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_p2m/vis_dh/pair20_000760_1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Synthesized Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/vis_p2m/vis_dh/pair33_001172_1/single_pose.png" alt="Single Pose">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input: Single-Person Pose</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/vis_p2m/vis_dh/pair33_001172_1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Output: Synthesized Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Comparison to Baselines</h2>
+        </div>
+      </div>
+
+      <!-- Comparison Selector -->
+      <div class="selectors" style="margin-bottom: 2rem;">
+        <div class="comparison-selector" style="text-align: center;">
+          <!-- <h3 class="title is-5" style="margin-bottom: 1rem;">Experiment</h3> -->
+          <ul class="nav-pills" id="comparison-selector">
+            <li class="active"><a href="javascript:void(0);" onclick="ChangeComparison('pose-animation')">Interactive Pose Animation</a></li>
+            <li><a href="javascript:void(0);" onclick="ChangeComparison('text-motion')">Text-to-Interaction Motion Synthesis</a></li>
+            <li><a href="javascript:void(0);" onclick="ChangeComparison('single-pose')">Single-Person Pose Interaction Synthesis</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Comparison 1: Interactive Pose Animation -->
+      <div id="pose-animation-comparison" class="comparison-content active-comparison">
+        <div class="columns is-multiline">
+          <!-- Input Image on the left -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image">
+                  <img src="static/videos/vis_contact/vis_intergen/G040T003A019R025/contact_pose.png" alt="Interactive Pose">
+                </figure>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Input: Interactive Pose</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- InterGen -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/vis_contact/vis_intergen/G040T003A019R025/video.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>InterGen</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- w/ Random-Pose -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/vis_contact/vis_random/G040T003A019R025/video.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>w/ Random-Pose</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ours -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/vis_contact/vis_interx/G040T003A019R025/video.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Ponimator</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison 2: Text-to-Interaction Motion Synthesis -->
+      <div id="text-motion-comparison" class="comparison-content">
+        <!-- Input Text -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <p class="subtitle is-5"><strong>Input: "push"</strong></p>
+        </div>
+
+        <!-- Methods in one row -->
+        <div class="columns is-multiline">
+          <!-- InterGen -->
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/vis_t2m/vis_intergen/s03_Push_1/video.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>InterGen</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- T2I -->
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/vis_t2m/vis_full/s02_Push_10/video.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>W/O Interactive Pose Anchor</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ours -->
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/vis_t2m/vis_chi3d/s03_Push_14/video.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Ponimator</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison 3: Single-Person Pose Interaction Synthesis -->
+      <div id="single-pose-comparison" class="comparison-content">
+        <div class="columns is-multiline">
+          <div class="column is-1"></div>
+          
+          <!-- Input Image on the left -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image">
+                  <img src="static/videos/vis_p2m/vis_random/G015T004A024R023/single_pose.png" alt="Single Pose">
+                </figure>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Input: Single Pose</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- P2I -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/vis_p2m/vis_random/G015T004A024R023/video.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>W/O Interactive Pose Anchor</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ours -->
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/vis_p2m/vis_interx/G015T004A024R023/video.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered">
+                <p class="subtitle is-6"><strong>Ponimator</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-2"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Extension</h2>
+          <p class="subtitle is-5" style="margin-top: 1rem; font-weight: 500;">
+            Our method naturally extends to longer sequences by cascading and enables multi-person interaction.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <div class="columns is-multiline">
+          <!-- Video 1 -->
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/extension/Ballet_005_002_split2_00.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered" style="padding: 1rem;">
+                <p class="subtitle is-6"><strong>Multi-person Interaction Generation</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/extension/pair00_000047_1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered" style="padding: 1rem;">
+                <p class="subtitle is-6"><strong>Long-term Interaction Generation</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="column is-4">
+            <div class="card">
+              <div class="card-content" style="padding: 0;">
+                <video autoplay controls muted loop playsinline width="100%">
+                  <source src="static/videos/extension/Tai_Chi_Kungfu_25_clip1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="card-content has-text-centered" style="padding: 1rem;">
+                <p class="subtitle is-6"><strong>High-dynamics Motion Generation</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Limitation</h2>
+          <p class="subtitle is-5" style="margin-top: 1rem; font-weight: 500;">
+            (1) Short interaction segments; (2) Ignore scene context; <br> (3) Pose errors may
+cause contact errors or foot sliding; <br> (4) Close interactions may lead to penetration.
+          </p>
+        </div>
+      </div>
+
+      <!-- Limitation Carousel: All Examples -->
+      <div id="limitation-carousel" class="carousel results-carousel" style="margin-top: 2rem;">
+        
+         <!-- Example 3: Scene context -->
+         <div class="item">
+          <p class="subtitle is-6 has-text-centered" style="margin-bottom: 1rem;"><strong>Without considering scene context lead to unrealistic motion in the scene</strong></p>
+          <div class="columns">
+            <div class="column is-6">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/limitation/Dancing_12847/Dancing_12847.png" alt="Input Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/limitation/Dancing_12847/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 4: Foot slippery -->
+        <div class="item">
+          <p class="subtitle is-6 has-text-centered" style="margin-bottom: 1rem;"><strong>Inaccurate interactive pose and occasional foot slippery</strong></p>
+          <div class="columns">
+            <div class="column is-6">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/limitation/Ways_to_Jump_+_Sit_+_Fall_Temper_Tantrum_clip3/Ways_to_Jump_+_Sit_+_Fall_Temper_Tantrum_clip3.png" alt="Input Image">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline width="100%">
+                    <source src="static/videos/limitation/Ways_to_Jump_+_Sit_+_Fall_Temper_Tantrum_clip3/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 1: Penetration -->
+        <div class="item">
+          <p class="subtitle is-6 has-text-centered" style="margin-bottom: 1rem;"><strong>Penetration happens in interaction</strong></p>
+          <div class="columns">
+            <div class="column is-6">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/limitation/boys_31900/boys_31900.png" alt="Input Image" style="max-height: 300px; width: auto; margin: 0 auto; display: block;">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline style="max-height: 300px; width: auto; margin: 0 auto; display: block;">
+                    <source src="static/videos/limitation/boys_31900/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example 2: Inaccurate interaction -->
+        <div class="item">
+          <p class="subtitle is-6 has-text-centered" style="margin-bottom: 1rem;"><strong>Inaccurate interaction without good human-human contact</strong></p>
+          <div class="columns">
+            <div class="column is-6">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="static/videos/limitation/get_water_2_clip1/get_water_2_clip1.png" alt="Input Image" style="max-height: 300px; width: auto; margin: 0 auto; display: block;">
+                  </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Input Image</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div class="card">
+                <div class="card-content" style="padding: 0;">
+                  <video autoplay controls muted loop playsinline style="max-height: 300px; width: auto; margin: 0 auto; display: block;">
+                    <source src="static/videos/limitation/get_water_2_clip1/video.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="card-content has-text-centered">
+                  <p class="subtitle is-6"><strong>Generated Motion</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{liu2025ponimator,
+  author    = {Liu, Shaowei and Guo, Chuan and Zhou, Bing and Wang, Jian},
+  title     = {Ponimator: Unfolding Interactive Pose for Versatile Human-Human Interaction Animation},
+  journal   = {ICCV},
+  year      = {2025},
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="https://arxiv.org/pdf/2510.14976">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/stevenlsw/ponimator" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <div class="columns is-centered">
+              <p>
+                This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Here</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
