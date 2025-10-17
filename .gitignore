@@ -1,2 +1,6 @@
 .gitigonre
 .DS_Store
+misc/
+outputs/
+checkpoints/
+body_models/

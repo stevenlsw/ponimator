@@ -1,0 +1,43 @@
+NAME: ContactPoseGen
+
+body_model_root: body_models # update to your own path
+CFG_WEIGHT: 3.5 # inference cfg weight
+
+
+NUM_LAYERS: 8
+NUM_HEADS: 8
+DROPOUT: 0.1
+INPUT_DIM: 201
+LATENT_DIM: 1024
+FF_SIZE: 2048
+ACTIVATION: gelu
+CHECKPOINT:
+DIFFUSION_STEPS: 1000
+BETA_SCHEDULER: cosine
+SAMPLER: uniform
+FINETUNE: False
+TEXT_ENCODER: clip
+CONTROL: text
+STRATEGY: ddim50
+
+
+smpl_model_type: smplx
+use_smpl_loss: True
+smpl_loss_type: l2
+smpl_loss_weight: 1.0
+mse_loss_weight: 1
+trans_loss_weight: 1
+bone_loss_weight: 10.0
+use_contact_loss: True
+contact_loss_weight: 1
+distance_loss_weight: 0.5
+use_foot_contact_loss: False
+foot_contact_loss_weight: 0
+use_relative_rot_loss: True
+relative_rot_loss_weight: 0.01
+use_vel_loss: False
+vel_loss_weight: 0.0
+foot_vel_loss_scale: 5.0
+# pose conditioning
+pose_mask_out_prob: 0.8
+text_mask_out_prob: 0.1
